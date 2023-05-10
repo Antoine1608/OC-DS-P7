@@ -1,1 +1,1 @@
-web: streamlit run --server.port $PORT app/chemin.ipynb #app/Naudy_Antoine_1_dashboard_et_API_032023.py
+web: streamlit run --server.port $PORT app/Naudy_Antoine_1_dashboard_et_API_032023.py

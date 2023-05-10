@@ -11,14 +11,14 @@ from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt
 
    #chargement des données Valid/Test
-df_i=pd.read_csv("../data/df_i.csv")
+df_i=pd.read_csv("data/df_i.csv")
 
 def main():
 
     # Fonction de prédiction
     @st.cache_data
     def predict (data):
-        best_model = pickle.load(open('../model/Best_predictor.pkl', 'rb'))
+        best_model = pickle.load(open('model/Best_predictor.pkl', 'rb'))
         y_te_pred = best_model.predict(data)
         y_te_pred = (y_te_pred >= 0.52)
         
