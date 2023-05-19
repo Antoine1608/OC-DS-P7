@@ -67,7 +67,10 @@ def main():
         fig = plt.figure(figsize=(10,5))
 
         plt.bar(X_axis - 0.2, credit_accepted, 0.2, label = 'credit_accepted')
-        plt.bar(X_axis + 0, credit_refused, 0.2, label = 'credit_refused')
+        try :
+            plt.bar(X_axis + 0, credit_refused, 0.2, label = 'credit_refused')
+        except :
+            pass
         plt.bar(X_axis + 0.2, customer, 0.2, label = 'customer')
 
         plt.xticks(X_axis, X, rotation=45)
