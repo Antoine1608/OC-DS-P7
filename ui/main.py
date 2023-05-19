@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import json
 
 #load data
-df=pd.read_csv("../data/df.csv")[0:100]
+df=pd.read_csv("../data/df_.csv")[0:100]
 #df.drop(columns='index', inplace=True)
 
 # Charger les variables threshold et important features
