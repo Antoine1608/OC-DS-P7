@@ -12,12 +12,12 @@ import matplotlib.pyplot as plt
 import json
 
 #load data
-df=pd.read_csv("../data/df_.csv")[0:100]
+df=pd.read_csv("data/df_.csv")[0:100]#../data/df_.csv")[0:100]
 #df.drop(columns='index', inplace=True)
 
 # Charger les variables threshold et important features
 # Opening JSON file
-f = open('../model/data.json')
+f = open('model/data.json')#'../model/data.json')
   
 # returns JSON object as 
 # a dictionary
@@ -34,7 +34,7 @@ def main():
     # Prediction function
     @st.cache_data
     def predict (data):
-        best_model = pickle.load(open('../model/model.pkl', 'rb'))
+        best_model = pickle.load(open('model/model.pkl', 'rb'))#'../model/model.pkl', 'rb'))
         y_te_pred = best_model.predict(data)
         y_te_pred = (y_te_pred >= best_th)
         
