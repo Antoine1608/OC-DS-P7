@@ -58,7 +58,7 @@ def main():
         X = l.columns
 
         credit_accepted = l.iloc[0,:]
-        if len(l)=3:
+        if len(l)==3:
             credit_refused = l.iloc[1,:]
         customer = l.iloc[-1,:]
 
