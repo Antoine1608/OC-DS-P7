@@ -45,7 +45,7 @@ def main():
     # Vizualisation function
     @st.cache_data
     def graphe(df, num, L_var, title):
-        df_u = df.loc[df['TARGET']!=3,L_var+['TARGET', 'SK_ID_CURR']]
+        df_u = df.loc[df['TARGET']==df['TARGET'],L_var+['TARGET', 'SK_ID_CURR']]
 
         dfg = df_u.groupby('TARGET').mean()
         dfg = dfg.drop(columns='SK_ID_CURR')
@@ -58,8 +58,9 @@ def main():
         X = l.columns
 
         credit_accepted = l.iloc[0,:]
-        credit_refused = l.iloc[1,:]
-        customer = l.iloc[2,:]
+        if len(l)=3:
+            credit_refused = l.iloc[1,:]
+        customer = l.iloc[-1,:]
 
         X_axis = np.arange(l.shape[1])
 
