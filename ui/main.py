@@ -11,7 +11,6 @@ from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt
 import json
 
-import pytest
 
 #load data
 df=pd.read_csv("data/df_.csv")[0:100]#../data/df_.csv")[0:100]
