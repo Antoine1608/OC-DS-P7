@@ -143,12 +143,13 @@ def run_tests():
     
     if result.returncode == 0:
         print("Les tests ont réussi !")
+        main()
     else:
         print("Les tests ont échoué.")
         print(result.stdout)
+        st.title("Les tests ont échoué")
  
 if __name__ == '__main__':
 
-    main()    
     run_tests()
 

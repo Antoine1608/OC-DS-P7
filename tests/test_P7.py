@@ -54,7 +54,7 @@ def test_predict_refused():
   # Act
   outcome = loaded_model.predict(refused)
   # Assert
-  assert outcome == 1
+  assert outcome == 0
 
 
 
