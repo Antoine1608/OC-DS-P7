@@ -11,9 +11,11 @@ from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt
 import json
 
+import pytest
+
 #load data
 df=pd.read_csv("data/df_.csv")[0:100]#../data/df_.csv")[0:100]
-#df.drop(columns='index', inplace=True)
+
 
 # Charger les variables threshold et important features
 # Opening JSON file
@@ -130,7 +132,24 @@ def main():
     
     fig = graphe(df_s, num, L_var, 'customer vs similar population')
     st.pyplot(fig)
-   
+    
+
+# Tests unitaires    
+    
+import subprocess
+
+def run_tests():
+    command = "pytest ../tests/test_P7.py"
+    result = subprocess.run(command, shell=True, capture_output=True, text=True)
+    
+    if result.returncode == 0:
+        print("Les tests ont réussi !")
+    else:
+        print("Les tests ont échoué.")
+        print(result.stdout)
+ 
 if __name__ == '__main__':
-    main()
+
+    main()    
+    run_tests()
 
