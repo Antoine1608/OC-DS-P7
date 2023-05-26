@@ -13,8 +13,7 @@ import json
 
 
 #load data
-df=pd.read_csv("data/df_.csv")[0:100]#../data/df_.csv")[0:100]
-
+df=pd.read_csv("data/df_.csv")
 
 # Charger les variables threshold et important features
 # Opening JSON file
@@ -97,7 +96,7 @@ def main():
     #else :
     #    st.sidebar.write("GENDER : female")
     #st.sidebar.write(f"Statut famille : {df.loc[df['SK_ID_CURR']==num,'NAME_FAMILY_STATUS']}")
-    st.sidebar.write(f"situation familiale : {[mot[19:] for mot in df.columns if (('FAMILY' in mot)&(int(df.loc[df['SK_ID_CURR']==100002,mot])))][0]}")
+    st.sidebar.write(f"situation familiale : {[mot[19:] for mot in df.columns if (('FAMILY' in mot)&(int(df.loc[df['SK_ID_CURR']==num,mot])))][0]}")
     st.sidebar.write(f"Nombre d'enfant(s) : {int(df.loc[df['SK_ID_CURR']==num,'CNT_CHILDREN'])}")
     st.sidebar.write(f"Age : {round(int(df.loc[df['SK_ID_CURR']==num, 'DAYS_BIRTH'])/(-364))}")    
     st.write(df.loc[df['SK_ID_CURR']==num, L_var])
