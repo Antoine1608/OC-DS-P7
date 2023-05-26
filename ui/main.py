@@ -13,7 +13,7 @@ import json
 
 
 #load data
-df=pd.read_csv("data/df_.csv")[0:100]#../data/df_.csv")[0:100]
+df=pd.read_csv("data/df.csv")[0:100]#../data/df_.csv")[0:100]
 
 
 # Charger les variables threshold et important features
@@ -80,22 +80,27 @@ def main():
         plt.ylabel("Values")
         plt.title(title)
         plt.legend()
-        plt.show()
+        #plt.show()
 
         return fig
 
     
     # Titre de la page
     st.title("Projet 7 - Implémentez un modèle de scoring")
-
-    st.title("Credit Predictor")
+    st.text("Données client : ")
 
     values = df['SK_ID_CURR'].values
     num = st.sidebar.selectbox(
         "Veuillez sélectionner un numéro de demande de prêt",
         values)
-    st.sidebar.write(df.loc[df['SK_ID_CURR']==num, ['CODE_GENDER','DAYS_BIRTH']])
-    
+    #if int(df.loc[df['SK_ID_CURR']==num, 'CODE_GENDER']) == 0 :
+    #    st.sidebar.write("GENDER : male")
+    #else :
+    #    st.sidebar.write("GENDER : female")
+    #st.sidebar.write(f"Statut famille : {df.loc[df['SK_ID_CURR']==num,'NAME_FAMILY_STATUS']}")
+    st.sidebar.write(f"situation familiale : {[mot[19:] for mot in df.columns if (('FAMILY' in mot)&(int(df.loc[df['SK_ID_CURR']==100002,mot])))][0]}")
+    st.sidebar.write(f"Nombre d'enfant(s) : {int(df.loc[df['SK_ID_CURR']==num,'CNT_CHILDREN'])}")
+    st.sidebar.write(f"Age : {round(int(df.loc[df['SK_ID_CURR']==num, 'DAYS_BIRTH'])/(-364))}")    
     st.write(df.loc[df['SK_ID_CURR']==num, L_var])
     
     #Le bouton de prédiction
@@ -111,11 +116,11 @@ def main():
 
         if proba_<=best_th:
             st.text('Crédit accordé')
-            st.text(f'Proba de défaillance (limite {best_th}): {round(proba_,2)}')
+            st.text(f'Probabilité de défaillance (limite {best_th}): {round(proba_,2)}')
 
         else : 
             st.text('Crédit refusé')
-            st.text(f'risque de défaut de crédit {best_th}: {round(proba_,2)}')
+            st.text(f'Probabilité de défaillance (limite {best_th}): {round(proba_,2)}')
                   
     # Appeler la fonction graphe() à l'intérieur de st.pyplot()
     fig = graphe(df, num, L_var, 'customer vs total population')
@@ -138,14 +143,14 @@ def main():
 import subprocess
 
 def run_tests():
-    command = "pytest ../tests/test_P7.py"
+    command = "pytest tests/test_P7.py"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     
     if result.returncode == 0:
-        print("Les tests ont réussi !")
+        print("Test réussi !")
         main()
     else:
-        print("Les tests ont échoué.")
+        print("Test échoué.")
         print(result.stdout)
         st.title("Les tests ont échoué")
  
