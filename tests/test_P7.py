@@ -9,6 +9,8 @@ from lightgbm import LGBMClassifier
 import mlflow
 import mlflow.sklearn
 import warnings
+
+print(os.getcwd())
   
 # Settings the warnings to be ignored
 warnings.filterwarnings('ignore')
@@ -25,6 +27,7 @@ refused = [data['refused']]
 def test_predict_accepted():
   # Arrange
   loaded_model = mlflow.sklearn.load_model("..\model")
+  print(loaded_model)
 
   # Act
   outcome = loaded_model.predict(accepted)
