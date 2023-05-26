@@ -20,8 +20,7 @@ df=pd.read_csv("data/df_.csv")[0:100]#../data/df_.csv")[0:100]
 # Opening JSON file
 f = open('model/data.json')#'../model/data.json')
   
-# returns JSON object as 
-# a dictionary
+# returns JSON object as a dictionary
 data = json.load(f)
 
 # Charger le meilleur seuil
