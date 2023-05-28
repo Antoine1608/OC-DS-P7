@@ -19,7 +19,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Opening JSON file
-f = open('data.json')
+f = open('model/data.json')
   
 # returns JSON object as a dictionary
 data = json.load(f)
@@ -45,15 +45,6 @@ def test_predict_refused():
   outcome = loaded_model.predict(refused)
   # Assert
   assert outcome == 1
-  '''
-
-def test_verif():
-
-  # Act
-  outcome = 0
-  # Assert
-  assert outcome == 0'''
-
 
 
 
