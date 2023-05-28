@@ -151,7 +151,7 @@ def run_tests():
     elif result.returncode == 1:
         print("Test échoué !")
         print(result.stdout)
-        st.title("Les tests ont échoué")
+        st.title("Test échoué !")
         main()
 
     else:
