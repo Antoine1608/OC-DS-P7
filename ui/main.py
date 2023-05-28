@@ -10,10 +10,10 @@ from lightgbm import LGBMClassifier
 from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt
 import json
-import os
+
 
 #load data
-df=pd.read_csv(r"https://github.com/Antoine1608/OC-DS-P7/blob/b31c8dedfb5271391528e38dc327c5ef1efb4fca/data/df_.csv")
+df=pd.read_csv("data/df_.csv")
 
 # Charger les variables threshold et important features
 # Opening JSON file
@@ -29,7 +29,7 @@ best_th = data['best_th']
 L_var = data['feat']
 
 def main():
-    
+
     # Prediction function
     @st.cache_data
     def predict (data):
@@ -121,8 +121,8 @@ def main():
             st.text(f'Probabilité de défaillance (limite {best_th}): {round(proba_,2)}')
                   
     # Appeler la fonction graphe() à l'intérieur de st.pyplot()
-    fig = graphe(df, num, L_var, 'customer vs total population')
-    st.pyplot(fig)
+    #fig = graphe(df, num, L_var, 'customer vs total population')
+    #st.pyplot(fig)
     
     # Customer generic data
     sex = int(df.loc[df['SK_ID_CURR']== num, 'CODE_GENDER'])
@@ -132,8 +132,8 @@ def main():
     mask = (df['DAYS_BIRTH'] <= age+5*364) & (df['DAYS_BIRTH'] > age-5*364)
     df_s = df.loc[(mask==True)&(df['CODE_GENDER']==sex),:].reset_index(drop=True)
     
-    fig = graphe(df_s, num, L_var, 'customer vs similar population')
-    st.pyplot(fig)
+    #fig = graphe(df_s, num, L_var, 'customer vs similar population')
+    #st.pyplot(fig)
     
 
 # Tests unitaires    
@@ -141,26 +141,18 @@ def main():
 import subprocess
 
 def run_tests():
-    command = "pytest ../tests/test_P7.py"
+    command = "pytest ./tests/test_P7.py"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     
     if result.returncode == 0:
         print("Test réussi !")
         main()
-
-    elif result.returncode == 1:
-        print("Test échoué !")
-        print(result.stdout)
-        st.title("Test échoué !")
-        main()
-
     else:
-        print("Problème test_P7.py")
+        print("Test échoué.")
         print(result.stdout)
-        st.title(f"Problème test_P7.py {os.getcwd()} {result.returncode}")
-    os.chdir("..")
-
+        st.title(f"Les tests ont échoué {result.returncode}")
+ 
 if __name__ == '__main__':
-    
+
     run_tests()
 
