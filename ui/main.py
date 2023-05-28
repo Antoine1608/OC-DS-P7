@@ -141,7 +141,7 @@ def main():
 import subprocess
 
 def run_tests():
-    command = "pytest tests/test_P7.py"
+    command = "pytest ../tests/test_P7.py"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     
     if result.returncode == 0:
@@ -157,7 +157,7 @@ def run_tests():
     else:
         print("Problème test_P7.py")
         print(result.stdout)
-        st.title(f"Problème test_P7.py {os.getcwd()}")
+        st.title(f"Problème test_P7.py {os.getcwd()} {result}")
 
 if __name__ == '__main__':
     run_tests()
