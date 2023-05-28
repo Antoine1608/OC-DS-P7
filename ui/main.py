@@ -147,12 +147,18 @@ def run_tests():
     if result.returncode == 0:
         print("Test réussi !")
         main()
-    else:
-        print("Test échoué.")
+
+    elif result.returncode == 1:
+        print("Test échoué !")
         print(result.stdout)
         st.title("Les tests ont échoué")
- 
-if __name__ == '__main__':
+        main()
 
+    else:
+        print("Problème test_P7.py")
+        print(result.stdout)
+        st.title("Problème test_P7.py")
+
+if __name__ == '__main__':
     run_tests()
 
