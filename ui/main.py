@@ -91,11 +91,6 @@ def main():
     num = st.sidebar.selectbox(
         "Veuillez sélectionner un numéro de demande de prêt",
         values)
-    #if int(df.loc[df['SK_ID_CURR']==num, 'CODE_GENDER']) == 0 :
-    #    st.sidebar.write("GENDER : male")
-    #else :
-    #    st.sidebar.write("GENDER : female")
-    #st.sidebar.write(f"Statut famille : {df.loc[df['SK_ID_CURR']==num,'NAME_FAMILY_STATUS']}")
     st.sidebar.write(f"situation familiale : {[mot[19:] for mot in df.columns if (('FAMILY' in mot)&(int(df.loc[df['SK_ID_CURR']==num,mot])))][0]}")
     st.sidebar.write(f"Nombre d'enfant(s) : {int(df.loc[df['SK_ID_CURR']==num,'CNT_CHILDREN'])}")
     st.sidebar.write(f"Age : {round(int(df.loc[df['SK_ID_CURR']==num, 'DAYS_BIRTH'])/(-364))}")    
@@ -121,8 +116,8 @@ def main():
             st.text(f'Probabilité de défaillance (limite {best_th}): {round(proba_,2)}')
                   
     # Appeler la fonction graphe() à l'intérieur de st.pyplot()
-    #fig = graphe(df, num, L_var, 'customer vs total population')
-    #st.pyplot(fig)
+    fig = graphe(df, num, L_var, 'customer vs total population')
+    st.pyplot(fig)
     
     # Customer generic data
     sex = int(df.loc[df['SK_ID_CURR']== num, 'CODE_GENDER'])
@@ -132,8 +127,8 @@ def main():
     mask = (df['DAYS_BIRTH'] <= age+5*364) & (df['DAYS_BIRTH'] > age-5*364)
     df_s = df.loc[(mask==True)&(df['CODE_GENDER']==sex),:].reset_index(drop=True)
     
-    #fig = graphe(df_s, num, L_var, 'customer vs similar population')
-    #st.pyplot(fig)
+    fig = graphe(df_s, num, L_var, 'customer vs similar population')
+    st.pyplot(fig)
     
 
 # Tests unitaires    
