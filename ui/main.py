@@ -91,7 +91,7 @@ def main():
     num = st.sidebar.selectbox(
         "Veuillez sélectionner un numéro de demande de prêt",
         values)
-    st.sidebar.write(f"situation familiale : {[mot[19:] for mot in df.columns if (('FAMILY' in mot)&(int(df.loc[df['SK_ID_CURR']==num,mot])))][0]}")
+    st.sidebar.write(f"Situation familiale : {[mot[19:] for mot in df.columns if (('FAMILY' in mot)&(int(df.loc[df['SK_ID_CURR']==num,mot])))][0]}")
     st.sidebar.write(f"Nombre d'enfant(s) : {int(df.loc[df['SK_ID_CURR']==num,'CNT_CHILDREN'])}")
     st.sidebar.write(f"Age : {round(int(df.loc[df['SK_ID_CURR']==num, 'DAYS_BIRTH'])/(-364))}")    
     st.write(df.loc[df['SK_ID_CURR']==num, L_var])
