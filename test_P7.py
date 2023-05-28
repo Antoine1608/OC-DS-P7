@@ -19,7 +19,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Opening JSON file
-f = open('data.json')
+f = open('./model/data.json')
   
 # returns JSON object as a dictionary
 data = json.load(f)
