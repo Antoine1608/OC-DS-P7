@@ -1,3 +1,3 @@
-web: streamlit run --server.port $PORT ui/main.py
+web: streamlit run --server.port $PORT main.py
 
 web:python pytest
