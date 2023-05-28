@@ -10,7 +10,7 @@ from lightgbm import LGBMClassifier
 from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt
 import json
-
+import os
 
 #load data
 df=pd.read_csv("data/df_.csv")

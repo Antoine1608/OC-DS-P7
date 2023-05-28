@@ -43,6 +43,13 @@ def test_predict_refused():
   # Assert
   assert outcome == 1
 
+def test_verif():
+
+  # Act
+  outcome = os.getcwd()
+  # Assert
+  assert outcome == os.getcwd()
+
 
 
 
