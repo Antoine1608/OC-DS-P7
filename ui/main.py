@@ -141,7 +141,6 @@ def main():
 import subprocess
 
 def run_tests():
-    os.chdir("../tests")
     command = "pytest"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     
