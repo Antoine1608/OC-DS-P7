@@ -157,7 +157,7 @@ def run_tests():
     else:
         print("Problème test_P7.py")
         print(result.stdout)
-        st.title(f"Problème test_P7.py {os.getcwd()} {result}")
+        st.title(f"Problème test_P7.py {os.getcwd()} {result.returncode}")
     os.chdir("..")
 
 if __name__ == '__main__':

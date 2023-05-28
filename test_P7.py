@@ -19,13 +19,13 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Opening JSON file
-#f = open('model\data.json')
+f = open('model\data.json')
   
 # returns JSON object as a dictionary
-#data = json.load(f)
+data = json.load(f)
 
-#accepted = [data['accepted']]
-#refused = [data['refused']]
+accepted = [data['accepted']]
+refused = [data['refused']]
 
 def test_predict_accepted():
   # Arrange
