@@ -13,7 +13,7 @@ import json
 import os
 
 #load data
-df=pd.read_csv("data/df_.csv")
+df=pd.read_csv("app/data/df_.csv")
 
 # Charger les variables threshold et important features
 # Opening JSON file
