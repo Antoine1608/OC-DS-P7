@@ -11,9 +11,9 @@ import mlflow.sklearn
 import warnings
 
 # Ajoutez le chemin d'accès au répertoire 'app' contenant md.py
-sys.path.append(os.path.abspath('..\\app'))
+#sys.path.append(os.path.abspath('..\\app'))
 
-print(os.getcwd())
+#print(os.getcwd())
   
 # Settings the warnings to be ignored
 warnings.filterwarnings('ignore')
