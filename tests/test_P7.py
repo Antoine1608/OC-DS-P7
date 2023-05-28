@@ -19,10 +19,11 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Opening JSON file
-#f = open('data.json')
+print(os.getcwd())
+f = open('model/data.json')
   
 # returns JSON object as a dictionary
-#data = json.load(f)
+data = json.load(f)
 
 accepted = [data['accepted']]
 refused = [data['refused']]
