@@ -14,7 +14,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Opening JSON file
-f = open('../model\data.json')
+f = open('app\model\data.json')
   
 # returns JSON object as a dictionary
 data = json.load(f)
@@ -24,7 +24,7 @@ refused = [data['refused']]
 
 def test_predict_accepted():
   # Arrange
-  loaded_model = mlflow.sklearn.load_model("../model")
+  loaded_model = mlflow.sklearn.load_model("app/model")
   print(loaded_model)
 
   # Act
@@ -34,7 +34,7 @@ def test_predict_accepted():
 
 def test_predict_refused():
   # Arrange
-  loaded_model = mlflow.sklearn.load_model("../model")
+  loaded_model = mlflow.sklearn.load_model("app/model")
 
   # Act
   outcome = loaded_model.predict(refused)
