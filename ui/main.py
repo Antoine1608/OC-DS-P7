@@ -29,7 +29,7 @@ best_th = data['best_th']
 L_var = data['feat']
 
 def main():
-
+    
     # Prediction function
     @st.cache_data
     def predict (data):
@@ -141,8 +141,8 @@ def main():
 import subprocess
 
 def run_tests():
-    
-    command = "pytest ../tests"
+    os.chdir("../tests")
+    command = "pytest"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     
     if result.returncode == 0:
@@ -159,6 +159,7 @@ def run_tests():
         print("Problème test_P7.py")
         print(result.stdout)
         st.title(f"Problème test_P7.py {os.getcwd()} {result}")
+    os.chdir("..")
 
 if __name__ == '__main__':
     run_tests()
