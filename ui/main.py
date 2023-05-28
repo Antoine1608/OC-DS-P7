@@ -141,7 +141,7 @@ def main():
 import subprocess
 
 def run_tests():
-    command = "tests\test_P7.py"
+    command = "pytest ../tests/test_P7.py"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     
     if result.returncode == 0:
@@ -161,5 +161,6 @@ def run_tests():
     os.chdir("..")
 
 if __name__ == '__main__':
+    
     run_tests()
 
