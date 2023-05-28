@@ -49,9 +49,9 @@ def test_predict_refused():
 def test_verif():
 
   # Act
-  outcome = os.getcwd()
+  outcome = 0
   # Assert
-  assert outcome == os.getcwd()
+  assert outcome == 0
 
 
 
