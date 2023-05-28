@@ -4,9 +4,11 @@
 
 Un dashboard streamlit est déployé sur Heroku.
 
-Il affiche des données et un graphe relatif à un client choisi :
+Il affiche des données et de deux graphes relatif à un client choisi :
 
-- Risque de défaut (en %)
-- Décision du modèle
-- Données numérique du client
-- Graphe situant les paramètres du client par rapport aux autres clients
+- Numéro du dossier de crédit
+- Données de base sur le client
+- Données numériques complètes du client
+- Prédiction du modèle sur le risque de solvabilité (probabilité de défaillance)
+- Graphe situant les paramètres du client par rapport à la population globale des clients
+- Graphe situant les paramètres du client par rapport à un échantillon de la population représentatif du client
