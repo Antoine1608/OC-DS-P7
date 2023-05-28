@@ -50,6 +50,26 @@ def test_verif():
   # Assert
   assert outcome == os.getcwd()
 
+if __name__ == "__main__" :
+  print(os.getcwd())
+  
+  # Settings the warnings to be ignored
+  warnings.filterwarnings('ignore')
+
+  # Opening JSON file
+  f = open("model\data.json")
+    
+  # returns JSON object as a dictionary
+  data = json.load(f)
+
+  accepted = [data['accepted']]
+  refused = [data['refused']]
+  
+  test_predict_accepted()
+  test_predict_refused()
+  test_verif()
+  
+
 
 
 
