@@ -27,7 +27,7 @@ warnings.filterwarnings('ignore')
 #accepted = [data['accepted']]
 #refused = [data['refused']]
 
-'''def test_predict_accepted():
+def test_predict_accepted():
   # Arrange
   loaded_model = mlflow.sklearn.load_model("model")
   print(loaded_model)
@@ -44,14 +44,15 @@ def test_predict_refused():
   # Act
   outcome = loaded_model.predict(refused)
   # Assert
-  assert outcome == 1'''
+  assert outcome == 1
+  '''
 
 def test_verif():
 
   # Act
   outcome = 0
   # Assert
-  assert outcome == 0
+  assert outcome == 0'''
 
 
 
