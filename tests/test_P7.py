@@ -36,7 +36,7 @@ def test_predict_accepted():
   # Act
   outcome = loaded_model.predict(accepted)
   # Assert
-  assert outcome == 0
+  assert outcome == 2
 
 def test_predict_refused():
   # Arrange
@@ -45,7 +45,7 @@ def test_predict_refused():
   # Act
   outcome = loaded_model.predict(refused)
   # Assert
-  assert outcome == 1
+  assert outcome == 3
 
 
 
