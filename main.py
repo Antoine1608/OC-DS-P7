@@ -121,8 +121,8 @@ def main():
             st.text(f'Probabilité de défaillance (limite {best_th}): {round(proba_,2)}')
                   
     # Appeler la fonction graphe() à l'intérieur de st.pyplot()
-    fig = graphe(df, num, L_var, 'customer vs total population')
-    st.pyplot(fig)
+    #fig = graphe(df, num, L_var, 'customer vs total population')
+    #st.pyplot(fig)
     
     # Customer generic data
     sex = int(df.loc[df['SK_ID_CURR']== num, 'CODE_GENDER'])
@@ -132,8 +132,8 @@ def main():
     mask = (df['DAYS_BIRTH'] <= age+5*364) & (df['DAYS_BIRTH'] > age-5*364)
     df_s = df.loc[(mask==True)&(df['CODE_GENDER']==sex),:].reset_index(drop=True)
     
-    fig = graphe(df_s, num, L_var, 'customer vs similar population')
-    st.pyplot(fig)
+    #fig = graphe(df_s, num, L_var, 'customer vs similar population')
+    #st.pyplot(fig)
     
 
 # Tests unitaires    
