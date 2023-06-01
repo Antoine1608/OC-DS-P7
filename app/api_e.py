@@ -35,7 +35,7 @@ L_var = data['feat']
 best_model = pickle.load(open('model/model.pkl', 'rb'))
 
 class Input(BaseModel):
-    SK_ID_CURR:int64
+    SK_ID_CURR:int
 
 @app.get("/")
 def read_root():
