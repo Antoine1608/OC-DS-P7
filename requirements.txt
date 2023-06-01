@@ -13,3 +13,6 @@ lightgbm
 pytest
 mlflow
 uvicorn
+fastapi
+typing
+pydantic
