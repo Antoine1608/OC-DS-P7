@@ -16,7 +16,7 @@ from pydantic import BaseModel
 app = FastAPI()
 
 # Charger les données
-df = pd.read_csv("data\dfex.csv")
+df = pd.read_csv("data/dfex.csv")
 
 # Charger les variables threshold et important features
 # Opening JSON file
