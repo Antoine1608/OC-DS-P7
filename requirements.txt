@@ -12,3 +12,4 @@ pickle-mixin
 lightgbm
 pytest
 mlflow
+uvicorn
