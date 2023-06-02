@@ -138,8 +138,20 @@ def run_tests():
         print("Test échoué.")
         print(result.stdout)
         st.title(f"Les tests ont échoué - code : {result.returncode}")
+
+def dashboard():
+    st.title("Tableau de bord")
  
 if __name__ == '__main__':
 
-    run_tests()
+    # Obtenez le chemin de l'URL
+    path = st.experimental_get_query_params().get("path", ["/"])[0]
+
+    # Définissez les routes
+    if path == "/":
+        run_tests()
+    elif path == "/dashboard":
+        dashboard()
+    else:
+        st.error("Page non trouvée")
 
