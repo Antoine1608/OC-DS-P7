@@ -140,7 +140,4 @@ def run_tests():
         st.title(f"Les tests ont échoué - code : {result.returncode}")
 
 if __name__ == '__main__':
-
-    print("essai")
-    main()
-    #run_tests()
+    run_tests()
