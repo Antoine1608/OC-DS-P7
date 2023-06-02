@@ -128,7 +128,7 @@ def main():
 import subprocess
 
 def run_tests():
-    command = "pytest ./tests/test_P7_.py"
+    command = "pytest ./tests/test_P7.py"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
 
     if result.returncode == 0:
