@@ -101,8 +101,8 @@ def main():
     input_data = {'SK_ID_CURR':int(num)}
 
     if st.button("Prediction"):
-
-        result = requests.post(url="http://127.0.0.1:8000/predict",data=json.dumps(input_data))
+        result = requests.post(url="http://monapp.herokuapp.com/predict",data=json.dumps(input_data))monapp.herokuapp.com
+        #result = requests.post(url="http://127.0.0.1:8000/predict",data=json.dumps(input_data))
         result=result.json()
         p=result['prediction']
         st.text(f'Probabilité de défaillance (limite {best_th}): {p}')
