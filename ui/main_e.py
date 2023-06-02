@@ -19,7 +19,7 @@ df=pd.read_csv("data/df_.csv")[0:100]
 # Charger les variables threshold et important features
 # Opening JSON file
 f = open('model/data.json')#'../model/data.json')
-  
+
 # returns JSON object as a dictionary
 data = json.load(f)
 
@@ -37,7 +37,7 @@ def main():
         best_model = pickle.load(open('model/model.pkl', 'rb'))#'../model/model.pkl', 'rb'))
         y_te_pred = best_model.predict(data)
         y_te_pred = (y_te_pred >= best_th)
-        
+
         y_proba = best_model.predict_proba(data)
 
         return y_te_pred, y_proba
@@ -83,7 +83,7 @@ def main():
 
         return fig
 
-    
+
     # Titre de la page
     st.title("Projet 7 - Implémentez un modèle de scoring")
     st.text("Données client : ")
@@ -96,41 +96,41 @@ def main():
     st.sidebar.write(f"Nombre d'enfant(s) : {int(df.loc[df['SK_ID_CURR']==num,'CNT_CHILDREN'])}")
     st.sidebar.write(f"Age : {round(int(df.loc[df['SK_ID_CURR']==num, 'DAYS_BIRTH'])/(-364))}")    
     st.write(df.loc[df['SK_ID_CURR']==num, L_var])
-    
+
     #Le bouton de prédiction
     input_data = {'SK_ID_CURR':int(num)}
-    
+
     if st.button("Prediction"):
-        
+
         result = requests.post(url="http://127.0.0.1:8000/predict",data=json.dumps(input_data))
         result=result.json()
         p=result['prediction']
         st.text(f'Probabilité de défaillance (limite {best_th}): {p}')
-                  
+
     # Appeler la fonction graphe() à l'intérieur de st.pyplot()
     fig = graphe(df, num, L_var, 'customer vs total population')
     st.pyplot(fig)
-    
+
     # Customer generic data
     sex = int(df.loc[df['SK_ID_CURR']== num, 'CODE_GENDER'])
     age = int(df.loc[df['SK_ID_CURR']== num, 'DAYS_BIRTH'])
-            
+
     # Similar group 
     mask = (df['DAYS_BIRTH'] <= age+5*364) & (df['DAYS_BIRTH'] > age-5*364)
     df_s = df.loc[(mask==True)&(df['CODE_GENDER']==sex),:].reset_index(drop=True)
-    
+
     fig = graphe(df_s, num, L_var, 'customer vs similar population')
     st.pyplot(fig)
-    
+
 
 # Tests unitaires    
-    
+
 import subprocess
 
 def run_tests():
     command = "pytest ./tests/test_P7_.py"
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
-    
+
     if result.returncode == 0:
         print("Test réussi !")
         main()
@@ -138,8 +138,7 @@ def run_tests():
         print("Test échoué.")
         print(result.stdout)
         st.title(f"Les tests ont échoué - code : {result.returncode}")
- 
+
 if __name__ == '__main__':
 
     run_tests()
-
