@@ -70,22 +70,40 @@ def main():
         valeur=resultat['risque_defaut']
         st.text(f'{p}\nprobabilité de défaillance {valeur}')
 
-    
+#fonction de déserialisation
+# Suppose que vous avez la représentation JSON de l'explication
+    def js_des(json_explanation):       
+
+        # Décodez le JSON en un dictionnaire Python
+        explanation_dict = json.loads(json_explanation)
+
+        # Récupérez les données du dictionnaire
+        values = explanation_dict['values']
+        base_values = explanation_dict['base_values']
+        data = explanation_dict['data']
+
+        # Reconstituez l'objet exp_cust à partir des données
+        explanation = shap.Explanation(values=np.array(values),
+                                    base_values=np.array(base_values),
+                                    data=np.array(data))
+        return explanation
+
+            
     exp = requests.post(url="http://monapp.herokuapp.com/graphe",data=json.dumps(input_data))
     #Shap client
     st.title("Client")
-    waterfall(exp[0])
+    waterfall(js_des(exp[0]))
     st.pyplot()
 
     #Shap global
     st.title('client global moyen')
-    waterfall(exp[1])
+    waterfall(js_des(exp[1]))
     st.pyplot()
 
     #Shap similaire
     # fonction pour récupérer l'âge d'un client
     st.title('client similaire - même sexe et même décennie de naissance')
-    waterfall(exp[2])
+    waterfall(js_des(exp[2])
     st.pyplot()
 
 # Tests unitaires    
