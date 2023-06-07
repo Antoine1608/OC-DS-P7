@@ -1,1 +1,1 @@
-web: streamlit run --server.port $PORT ui/main_e_jj.py
+web: streamlit run --server.port $PORT ui/main_e_j.py
