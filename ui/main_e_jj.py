@@ -95,7 +95,7 @@ def main():
     waterfall(js_des(exp[0]))
     st.pyplot()
 
-    #Shap global
+    '''#Shap global
     st.title('client global moyen')
     waterfall(js_des(exp[1]))
     st.pyplot()
@@ -104,7 +104,7 @@ def main():
     # fonction pour récupérer l'âge d'un client
     st.title('client similaire - même sexe et même décennie de naissance')
     waterfall(js_des(exp[2]))
-    st.pyplot()
+    st.pyplot()'''
 
 # Tests unitaires    
 
