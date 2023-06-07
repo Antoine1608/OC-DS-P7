@@ -17,7 +17,7 @@ from shap.plots import waterfall, force
 
 
 #load data
-df = pd.read_csv("data/df.csv")[0:20]
+df = pd.read_csv("data/df_.csv")[0:20]
 X = pd.read_csv("data/X.csv")
 
 # Définir la première colonne en tant qu'index
