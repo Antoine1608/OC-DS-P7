@@ -11,9 +11,10 @@ from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt
 import json
 import requests
-
 import shap
 from shap.plots import waterfall, force
+
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 #load data
@@ -62,11 +63,12 @@ def main():
     input_data = {'SK_ID_CURR':int(num)}
 
     if st.button("Prediction"):
-        result = requests.post(url="http://monapp.herokuapp.com/predict",data=json.dumps(input_data))
+        resultat = requests.post(url="http://monapp.herokuapp.com/predict",data=json.dumps(input_data))
         #result = requests.post(url="http://127.0.0.1:8000/predict",data=json.dumps(input_data))
-        result=result.json()
-        p=result['prediction']
-        st.text(f'Probabilité de défaillance (limite {best_th}): {p}')
+        resultat=resultat.json()
+        p=resultat['prediction']
+        valeur=resultat['risque_defaut']
+        st.text(f'{p}\nprobabilité de défaillance {valeur}')
 
     #Shap client
     idx = df[df['SK_ID_CURR'] == num].index.item()
