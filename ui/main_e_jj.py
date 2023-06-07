@@ -103,7 +103,7 @@ def main():
     #Shap similaire
     # fonction pour récupérer l'âge d'un client
     st.title('client similaire - même sexe et même décennie de naissance')
-    waterfall(js_des(exp[2])
+    waterfall(js_des(exp[2]))
     st.pyplot()
 
 # Tests unitaires    
