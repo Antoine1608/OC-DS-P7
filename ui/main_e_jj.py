@@ -92,7 +92,7 @@ def main():
     exp = requests.post(url="http://monapp.herokuapp.com/graphe",data=json.dumps(input_data))
     #Shap client
     st.title("Client")
-    waterfall(js_des(exp[0]))
+    waterfall(js_des(exp))
     st.pyplot()
 
     '''#Shap global
